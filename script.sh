@@ -2,9 +2,13 @@
  # @Author: clingxin
  # @Date: 2021-05-04 18:36:01
  # @LastEditors: clingxin
- # @LastEditTime: 2021-05-04 18:47:36
+ # @LastEditTime: 2021-05-04 18:56:03
  # @FilePath: /serverless-fastapi/script.sh
 ###
+
+virtualenv -p python3.9 env
+
+pipdeptree --exclude pipdeptree,pip,setuptools,wheel --warn silence | grep -E '^\w+' > requirements.txt
 
 uvicorn app.main:app --reload
 cd env/lib/python3.9/site-packages
